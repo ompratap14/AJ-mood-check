@@ -325,9 +325,8 @@ Choose your mood and let your heart speak 💫
 <div class="message-box" id="messageBox">
 <h2 id="moodTitle"></h2>
 <p id="moodMessage"></p>
-
-<button class="send-btn" onclick="sendMood()">
-💌 Send This Mood
+<button class="send-btn" onclick="sendInstagramMood()">
+📩 Send on Instagram
 </button>
 </div>
 
@@ -353,6 +352,26 @@ behavior:'smooth'
 });
 
 }
+function sendInstagramMood(){
+
+let text =
+"💖 My current mood is: " +
+currentMood +
+" ✨";
+
+navigator.clipboard.writeText(text);
+
+alert(
+"Mood copied 💫\nPaste it in Instagram DM."
+);
+
+window.open(
+"https://instagram.com/direct/inbox/",
+"_blank"
+);
+
+}  
+  
 function sendMood(){
 
 let phone = "918191904121";
