@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AJ Mood Universe</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, #f472b6, #60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: #cbd5e1;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+    }
+
+    .mood-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .mood-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 25px;
+      padding: 25px;
+      cursor: pointer;
+      transition: 0.4s ease;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mood-card::before {
+      content: '';
+      position: absolute;
+      width: 120%;
+      height: 120%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.08), transparent);
+      top: -100%;
+      left: -100%;
+      transition: 0.6s;
+    }
+
+    .mood-card:hover::before {
+      top: 100%;
+      left: 100%;
+    }
+
+    .mood-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    }
+
+    .emoji {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .mood-name {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .mood-desc {
+      color: #e2e8f0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .message-box {
+      margin-top: 40px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 25px;
+      display: none;
+      animation: fadeIn 0.5s ease;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .message-box h2 {
+      margin-bottom: 15px;
+      color: #f9a8d4;
+    }
+
+    .message-box p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #f1f5f9;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media(max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>✨AJ Mood Universe ✨</h1>
+  <p class="subtitle">Choose your mood and let the universe understand your heart 💫</p>
+
+  <div class="mood-grid">
+
+    <div class="mood-card" onclick="showMessage('happy')">
+      <div class="emoji">😊</div>
+      <div class="mood-name">Happy</div>
+      <div class="mood-desc">A bright mood filled with smiles, positivity, and beautiful energy.</div>
+    </div>
+
+    <div class="mood-card" onclick="showMessage('sad')">
+      <div class="emoji">😔</div>
+      <div class="mood-name">Sad</div>
+      <div class="mood-desc">When emotions feel heavy and the heart silently needs comfort.</div>
+    </div>
+
+    <div class="mood-card" onclick="showMessage('angry')">
+      <div class="emoji">😤</div>
+      <div class="mood-name">Angry</div>
+      <div class="mood-desc">A storm of emotions caused by frustration, stress, or disappointment.</div>
+    </div>
+
+    <div class="mood-card" onclick="showMessage('romantic')">
+      <div class="emoji">❤️</div>
+      <div class="mood-name">Romantic</div>
+      <div class="mood-desc">A soft and loving feeling where every moment feels magical.</div>
+    </div>
+
+    <div class="mood-card" onclick="showMessage('tired')">
+      <div class="emoji">😴</div>
+      <div class="mood-name">Tired</div>
+      <div class="mood-desc">When the body needs rest and the soul wants peace.</div>
+    </div>
+
+    <div class="mood-card" onclick="showMessage('excited')">
+      <div class="emoji">🤩</div>
+      <div class="mood-name">Excited</div>
+      <div class="mood-desc">Overflowing energy and happiness waiting to explode into smiles.</div>
+    </div>
+
+    <div class="mood-card" onclick="showMessage('lonely')">
+      <div class="emoji">🌙</div>
+      <div class="mood-name">Lonely</div>
+      <div class="mood-desc">A quiet feeling where someone special is deeply missed.</div>
+    </div>
+
+    <div class="mood-card" onclick="showMessage('confused')">
+      <div class="emoji">🤔</div>
+      <div class="mood-name">Confused</div>
+      <div class="mood-desc">When thoughts become messy and clarity feels far away.</div>
+    </div>
+
+    <div class="mood-card" onclick="showMessage('motivated')">
+      <div class="emoji">🔥</div>
+      <div class="mood-name">Motivated</div>
+      <div class="mood-desc">A powerful state filled with ambition, dreams, and confidence.</div>
+    </div>
+
+    <div class="mood-card" onclick="showMessage('special')">
+      <div class="emoji">✨</div>
+      <div class="mood-name">Special</div>
+      <div class="mood-desc">A rare mood where someone feels deeply appreciated and valued.</div>
+    </div>
+
+  </div>
+
+  <div class="message-box" id="messageBox">
+    <h2 id="moodTitle"></h2>
+    <p id="moodMessage"></p>
+  </div>
+</div>
+
+<script>
+  const messages = {
+    happy: {
+      title: '😊 Happy Mood',
+      text: 'Your smile is literally changing the atmosphere around you right now. Keep shining because your happiness is contagious.'
+    },
+
+    sad: {
+      title: '😔 Sad Mood',
+      text: 'Even the strongest hearts need a moment to breathe. You do not have to carry everything alone.'
+    },
+
+    angry: {
+      title: '😤 Angry Mood',
+      text: 'Sometimes emotions become storms. Take a deep breath — even storms eventually calm down.'
+    },
+
+    romantic: {
+      title: '❤️ Romantic Mood',
+      text: 'Love looks beautiful on you. Every heartbeat feels softer when your heart is full of affection.'
+    },
+
+    tired: {
+      title: '😴 Tired Mood',
+      text: 'You have been strong for too long. Rest is not weakness — it is healing.'
+    },
+
+    excited: {
+      title: '🤩 Excited Mood',
+      text: 'Your energy feels like fireworks tonight. Enjoy every second of this beautiful excitement.'
+    },
+
+    lonely: {
+      title: '🌙 Lonely Mood',
+      text: 'Even on quiet nights, remember that your presence means more to people than you realize.'
+    },
+
+    confused: {
+      title: '🤔 Confused Mood',
+      text: 'Not every answer comes immediately. Sometimes life needs silence before clarity appears.'
+    },
+
+    motivated: {
+      title: '🔥 Motivated Mood',
+      text: 'This is your powerful era. Chase your dreams fearlessly because you are capable of amazing things.'
+    },
+
+    special: {
+      title: '✨ Special Mood',
+      text: 'You are not ordinary to this world. Some people enter life quietly and still become unforgettable.'
+    }
+  };
+
+  function showMessage(mood) {
+    document.getElementById('messageBox').style.display = 'block';
+    document.getElementById('moodTitle').innerText = messages[mood].title;
+    document.getElementById('moodMessage').innerText = messages[mood].text;
+
+    document.getElementById('messageBox').scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+</script>
+
+</body>
+</html>
