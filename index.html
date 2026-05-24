@@ -358,19 +358,19 @@ function sendMood(){
 let phone = "918191904121";
 
 let text =
-"🌸 AJ Mood Universe 🌸\n\n" +
-"My current mood is: " + currentMood + "\n\n" +
-"💫 Sent with feelings";
+`AJ Mood Universe
 
-let encodedText = encodeURIComponent(text);
+My current mood is:
+${currentMood}
 
-window.open(
-"https://wa.me/" + phone + "?text=" + encodedText,
-"_blank"
-);
+Sent with feelings 💖`;
+
+let url =
+`https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(text)}`;
+
+window.open(url, "_blank");
 
 }
-
 
 
 
