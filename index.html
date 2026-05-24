@@ -358,10 +358,15 @@ function sendMood(){
 let phone = "918191904121";
 
 let text =
-`My current mood is ${currentMood}`;
+"🌸 AJ Mood Universe 🌸\n\n" +
+"My current mood is: " + currentMood + "\n\n" +
+"💫 Sent with feelings";
+
+let encodedText = encodeURIComponent(text);
 
 window.open(
-`https://wa.me/${phone}?text=${encodeURIComponent(text)}`
+"https://wa.me/" + phone + "?text=" + encodedText,
+"_blank"
 );
 
 }
