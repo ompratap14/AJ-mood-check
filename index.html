@@ -362,15 +362,22 @@ currentMood +
 navigator.clipboard.writeText(text);
 
 alert(
-"Mood copied 💫\nPaste it in Instagram DM."
+"Mood copied 💫\nOpening Instagram profile..."
 );
 
+window.location.href =
+"instagram://user?username=ops_2510";
+
+setTimeout(() => {
+
 window.open(
-"https://instagram.com/direct/inbox/",
+"https://instagram.com/ops_2510",
 "_blank"
 );
 
-}  
+}, 2000);
+
+}
   
 function sendMood(){
 
